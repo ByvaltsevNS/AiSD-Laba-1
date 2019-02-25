@@ -1,5 +1,6 @@
 #pragma once
 #include "screen.h"
+#include "Errors.h"
 
 //int min(int a, int b, int c) {
 //	return (a > b) ? ((b > c) ? c : b) : ((a > c) ? c : a);
@@ -38,8 +39,21 @@ bool on_screen(int a, int b) // проверка попадания на экран
 
 void put_point(int a, int b)
 {
-	if (on_screen(a, b)) 
-		screen[b][a] = black;
+	try {
+		if (on_screen(a, b))
+			screen[b][a] = black;
+		else
+			throw Inc_Point("Point does not exist -");
+	}
+	catch (Inc_Point &e) {
+		std::cout << e.what() << " x: " << a << ", y: " << b << std::endl;
+		/*if (a > XMAX) a = XMAX;
+		else if (a < 0) a = 0;
+
+		if (b > YMAX) b = YMAX;
+		else if (b < 0) b = 0;
+		screen[b][a] = black;*/
+	}
 }
 
 void put_line(int x0, int y0, int x1, int y1)
@@ -90,6 +104,7 @@ struct shape { // Виртуальный базовый класс "фигура"
 	static shape* list; // Начало списка фигур (одно на все фигуры!)
 	shape* next;
 	shape() { next = list; list = this; } //Фигура присоединяется к списку
+	virtual ~shape() { list = next; next = nullptr; }
 	virtual point north() const = 0; //Точки для привязки
 	virtual point south() const = 0;
 	virtual point east() const = 0;

@@ -9,35 +9,38 @@ int main() //только дл€ Visual C++ (иначе Ц main( ))
 	screen_init();
 
 	//== 1.ќбъ€вление набора фигур ==
-	rectangle hat(point(0, 0), point(14, 5));
-	line brim(point(0, 15), 17);
-	myshape face(point(15, 10), point(27, 18));
-	//h_circle beard(point(40, 10), point(50, 20));
-	triangle_with_cross t1(point(35, 20), 5);
-	triangle_with_cross t2(point(35, 5), 5);
-	triangle_with_cross t3(point(19, 2), 1);
+	//rectangle hat(point(0, 0), point(14, 5));
+	//line brim(point(0, 15), 17);
+	//myshape face(point(15, 10), point(27, 18));
+	////h_circle beard(point(40, 10), point(50, 20));
+	//triangle_with_cross t1(point(35, 20), 5);
+	//triangle_with_cross t2(point(35, 5), 5);
+	//triangle_with_cross t3(point(19, 2), 1);
+	//line* l = new line(point(50, 0), point(50, 30));
+	//rectangle r(point(-5, -5), point(5, 5));
+	line l(point(-5, 0), point(5, 5));
 	shape_refresh();
 	std::cout << "=== Generated... ===\n";
 	std::cin.get(); //—мотреть исходный набор
    //== 2.ќриентаци€ ==
-	hat.rotate_right();
-	brim.resize(2);
-	face.resize(2);
-	//beard.flip_vertically();
-	t2.rotate_left();
-	t3.rotate_right();
-	t3.resize(2);
+	//hat.rotate_right();
+	//brim.resize(2);
+	//face.resize(2);
+	////beard.flip_vertically();
+	//t2.rotate_left();
+	//t3.rotate_right();
+	//t3.resize(2);
+	//delete l;
 	shape_refresh();
 	std::cout << "=== Prepared... ===\n";
 	std::cin.get(); //—мотреть ориентацию
    //== 3.—борка изображени€ ==
    // face.move(0, -10); // ¬ исходное положение
-	up(brim, face);
+	/*up(brim, face);
 	up(hat, brim);
-	shape_refresh();
 	up_right(t1, brim);
 	up_left(t2, brim);
-	down(t3, face);
+	down(t3, face);*/
 	shape_refresh();
 	std::cout << "=== Ready! ===\n";
 	std::cin.get(); //—мотреть результат
